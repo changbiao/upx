@@ -34,11 +34,8 @@ matrix:
   include:
     - os: linux
       compiler: gcc
-      env: C=gcc-4.6-m64
-    - os: osx
-      compiler: clang
-      env: C=clang-800-m64
-      osx_image: xcode8
+      env: C=gcc CROSS=arm-linux
+      addons: { apt: { packages: [ "gcc-arm-linux-gnueabi", "qemu-user-static" ] } }
 
 install:
   - umask 022; cd $TRAVIS_BUILD_DIR && mkdir -p ../deps
