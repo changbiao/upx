@@ -34,11 +34,11 @@ matrix:
   include:
     - os: linux
       compiler: gcc
-      env: C=gcc-4.6-m32
-      addons: { apt: { packages: [ "g++-multilib", "zlib1g-dev:i386" ] } }
-    - os: linux
-      compiler: gcc
       env: C=gcc-4.6-m64
+    - os: osx
+      compiler: clang
+      env: C=clang-800-m64
+      osx_image: xcode8
 
 install:
   - umask 022; cd $TRAVIS_BUILD_DIR && mkdir -p ../deps

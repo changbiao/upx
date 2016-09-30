@@ -3,7 +3,7 @@
 # Support for Travis CI -- https://travis-ci.org/upx/upx/builds
 # Copyright (C) Markus Franz Xaver Johannes Oberhumer
 
-#set -x # debug
+set -x # debug
 
 # compatibility wrappers
 if [[ $TRAVIS_OS_NAME == osx ]]; then
@@ -23,6 +23,8 @@ sort() {
 fi
 
 umask 022
+
+argv0="$0"; argv0dir=$(readlink -fn -- "$0"); argv0dir=$(dirname "$0")
 
 # just in case
 UPX=
