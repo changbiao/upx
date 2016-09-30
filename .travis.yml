@@ -43,11 +43,11 @@ matrix:
     - os: linux
       compiler: gcc
       env: C=gcc-4.6-m32 CROSS=i386-win32.mingw
-      addons: { apt: { packages: [ "gcc-mingw-w64-i686" ] } }
+      addons: { apt: { packages: [ "gcc-mingw-w64" ] } }
     - os: linux
       compiler: gcc
       env: C=gcc-4.6-m64 CROSS=x86_64-win64.mingw
-      addons: { apt: { packages: [ "gcc-mingw-w64-x86-64" ] } }
+      addons: { apt: { packages: [ "gcc-mingw-w64" ] } }
 
 install:
   - dpkg -L qemu-user-static || true

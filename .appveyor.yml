@@ -6,7 +6,7 @@ os: Visual Studio 2015
 environment:
   global: { TRAVIS_OS_NAME: windows, C: "", B: release, CROSS: "", ALLOW_FAIL: "" }
   matrix:
-    - { C: gcc-m64 }
+    - { C: gcc-m32 }
 #    - { C: msvc-14.0-x64, CL_VERSION: 19.00, VS_VERSION: 2015 }
 
 init:
@@ -42,7 +42,7 @@ build_script:
   # setup directories following the VPATH build in travis_build.sh
   - cd c:\projects\upx
   - dir c:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0\mingw32\bin
-  - if "%C%"=="gcc-m64" ( bash -x ./.github/travis_build.sh & exit )
+  - if "%C%"=="gcc-m32" ( bash -x ./.github/travis_build.sh & exit )
   - set BDIR=c:\projects\build\%C%\%B%
   - md %BDIR% %BDIR%\ucl-1.03 %BDIR%\upx %BDIR%\upx-testsuite %BDIR%\zlib-1.2.8
   - set DEFS=-D_CRT_SECURE_NO_WARNINGS
