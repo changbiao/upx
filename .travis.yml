@@ -39,7 +39,7 @@ matrix:
     - os: linux
       compiler: gcc
       env: C=gcc CROSS=armeb-linux
-      addons: { apt: { packages: [ "gcc-armeb-linux-gnueabi", "qemu-user-static" ] } }
+      addons: { apt: { packages: [ "xgcc-armeb-linux-gnueabi", "qemu-user-static" ] } }
 
 install:
   - umask 022; cd $TRAVIS_BUILD_DIR && mkdir -p ../deps
