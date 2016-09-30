@@ -24,7 +24,7 @@ addons:
 
 env:
   global:
-    - C= B= ALLOW_FAIL=
+    - C= B= CROSS= ALLOW_FAIL=
   matrix:
     - TRAVIS_EMPTY_JOB_WORKAROUND=true
 
@@ -34,136 +34,11 @@ matrix:
   include:
     - os: linux
       compiler: gcc
-      env: C=gcc-4.4-m32
-      addons: { apt: { sources: *S, packages: [ "g++-4.4-multilib", "zlib1g-dev:i386" ] } }
-    - os: linux
-      compiler: gcc
-      env: C=gcc-4.4-m64
-      addons: { apt: { sources: *S, packages: [ "g++-4.4" ] } }
-    - os: linux
-      compiler: gcc
       env: C=gcc-4.6-m32
       addons: { apt: { packages: [ "g++-multilib", "zlib1g-dev:i386" ] } }
     - os: linux
       compiler: gcc
       env: C=gcc-4.6-m64
-    - os: linux
-      compiler: gcc
-      env: C=gcc-5-m32
-      addons: { apt: { sources: *S, packages: [ "g++-5-multilib", "zlib1g-dev:i386" ] } }
-    - os: linux
-      compiler: gcc
-      env: C=gcc-5-m64
-      addons: { apt: { sources: *S, packages: [ "g++-5" ] } }
-    - os: linux
-      compiler: gcc
-      env: C=gcc-6-m32
-      addons: { apt: { sources: *S, packages: [ "g++-6-multilib", "zlib1g-dev:i386" ] } }
-    - os: linux
-      compiler: gcc
-      env: C=gcc-6-m64
-      addons: { apt: { sources: *S, packages: [ "g++-6" ] } }
-    - os: linux
-      compiler: gcc
-      env: C=gcc-6-m32 B=debug
-      addons: { apt: { sources: *S, packages: [ "g++-6-multilib", "zlib1g-dev:i386" ] } }
-    - os: linux
-      compiler: gcc
-      env: C=gcc-6-m64 B=debug
-      addons: { apt: { sources: *S, packages: [ "g++-6" ] } }
-    - os: linux
-      compiler: gcc
-      env: C=gcc-6-m64 B=debug+sanitize
-      addons: { apt: { sources: *S, packages: [ "g++-6" ] } }
-    - os: linux
-      compiler: gcc
-      env: C=gcc-6-m64 B=sanitize
-      addons: { apt: { sources: *S, packages: [ "g++-6" ] } }
-    - os: linux
-      compiler: gcc
-      env: C=gcc-6-m64 B=valgrind
-      addons: { apt: { sources: *S, packages: [ "g++-6", valgrind ] } }
-    - os: linux
-      compiler: clang
-      env: C=clang-3.4-m32
-      addons: { apt: { packages: [ "g++-multilib", "zlib1g-dev:i386" ] } }
-    - os: linux
-      compiler: clang
-      env: C=clang-3.4-m64
-    - os: linux
-      compiler: clang
-      env: C=clang-3.5-m32
-      addons: { apt: { sources: *S, packages: [ "clang-3.5", "g++-6-multilib", "zlib1g-dev:i386" ] } }
-    - os: linux
-      compiler: clang
-      env: C=clang-3.5-m64
-      addons: { apt: { sources: *S, packages: [ "clang-3.5" ] } }
-    - os: linux
-      compiler: clang
-      env: C=clang-3.6-m32
-      addons: { apt: { sources: *S, packages: [ "clang-3.6", "g++-6-multilib", "zlib1g-dev:i386" ] } }
-    - os: linux
-      compiler: clang
-      env: C=clang-3.6-m64
-      addons: { apt: { sources: *S, packages: [ "clang-3.6" ] } }
-    - os: linux
-      compiler: clang
-      env: C=clang-3.7-m32
-      addons: { apt: { sources: *S, packages: [ "clang-3.7", "g++-6-multilib", "zlib1g-dev:i386" ] } }
-    - os: linux
-      compiler: clang
-      env: C=clang-3.7-m64
-      addons: { apt: { sources: *S, packages: [ "clang-3.7" ] } }
-    - os: linux
-      compiler: clang
-      env: C=clang-3.8-m32
-      addons: { apt: { sources: *S, packages: [ "clang-3.8", "g++-6-multilib", "zlib1g-dev:i386" ] } }
-    - os: linux
-      compiler: clang
-      env: C=clang-3.8-m64
-      addons: { apt: { sources: *S, packages: [ "clang-3.8" ] } }
-    - os: linux
-      compiler: clang
-      env: C=clang-3.8-m64 B=debug+sanitize
-      addons: { apt: { sources: *S, packages: [ "clang-3.8" ] } }
-    - os: linux
-      compiler: clang
-      env: C=clang-3.8-m64 B=sanitize
-      addons: { apt: { sources: *S, packages: [ "clang-3.8" ] } }
-    - os: linux
-      compiler: clang
-      env: C=clang-3.8-m64 B=debug+scan-build
-      addons: { apt: { sources: *S, packages: [ "clang-3.8" ] } }
-    - os: linux
-      compiler: clang
-      env: C=clang-3.8-m64 B=scan-build
-      addons: { apt: { sources: *S, packages: [ "clang-3.8" ] } }
-    - os: osx
-      compiler: clang
-      # must use debug build or else we get "ld: internal error: atom not found" when linking
-      env: C=clang-602-m32 B=debug
-      osx_image: xcode6.4
-    - os: osx
-      compiler: clang
-      # must use debug build or else we get "ld: internal error: atom not found" when linking
-      env: C=clang-602-m64 B=debug
-      osx_image: xcode6.4
-    - os: osx
-      compiler: clang
-      env: C=clang-703-m32
-      osx_image: xcode7.3
-    - os: osx
-      compiler: clang
-      env: C=clang-703-m64
-      osx_image: xcode7.3
-    - os: osx
-      compiler: clang
-      env: C=clang-800-m32
-      osx_image: xcode8
-    - os: osx
-      compiler: clang
-      env: C=clang-800-m64
-      osx_image: xcode8
 
 install:
   - umask 022; cd $TRAVIS_BUILD_DIR && mkdir -p ../deps

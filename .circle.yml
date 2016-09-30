@@ -11,6 +11,7 @@ machine:
     TRAVIS_OS_NAME: linux
     C: gcc-4.8-m64
     B: release
+    CROSS:
     ALLOW_FAIL:
 
 checkout:

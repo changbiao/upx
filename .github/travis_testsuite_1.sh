@@ -33,7 +33,7 @@ testsuite_split_f() {
 }
 
 testsuite_check_sha() {
-    (cd "$1" && $sha256sum -b */* | LC_ALL=C sort -k2) > $1/.sha256sums.current
+    (cd "$1" && sha256sum -b */* | LC_ALL=C sort -k2) > $1/.sha256sums.current
     echo
     cat $1/.sha256sums.current
     if ! cmp -s $1/.sha256sums.expected $1/.sha256sums.current; then
@@ -80,10 +80,6 @@ if [[ ! -d $upx_testsuite_SRCDIR/files/packed ]]; then exit 1; fi
 if [[ -z $upx_exe ]]; then exit 1; fi
 if ! $upx_exe --version >/dev/null; then exit 1; fi
 
-sha256sum=sha256sum
-if [[ $TRAVIS_OS_NAME == osx ]]; then
-    sha256sum=gsha256sum # brew install coreutils
-fi
 if [[ $B =~ (^|\+)valgrind($|\+) ]]; then
     valgrind_flags="--leak-check=full --show-reachable=yes"
     valgrind_flags="-q --leak-check=no --error-exitcode=1"

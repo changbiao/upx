@@ -4,6 +4,24 @@
 # Copyright (C) Markus Franz Xaver Johannes Oberhumer
 
 #set -x # debug
+
+# compatibility wrappers
+if [[ $TRAVIS_OS_NAME == osx ]]; then
+# use GNU coreutils ("brew install coreutils")
+readlink() {
+    greadlink "$@"
+}
+sha256sum() {
+    gsha256sum "$@"
+}
+fi
+if [[ -n $APPVEYOR_JOB_ID ]]; then
+# for some reason this is needed for bash on AppVeyor
+sort() {
+    /usr/bin/sort "$@"
+}
+fi
+
 umask 022
 
 # just in case
@@ -28,8 +46,9 @@ case $C in
         CC="cl"; CXX="cl" ;; # standard system compiler
 esac
 case $C in
-    msvc*) ;;
     clang*-m32) CC="$CC -m32"; CXX="$CXX -m32" ;;
+    clang*-m64) CC="$CC -m64"; CXX="$CXX -m64" ;;
+    gcc*-m32)   CC="$CC -m32"; CXX="$CXX -m32" ;;
     gcc*-m64)   CC="$CC -m64"; CXX="$CXX -m64" ;;
 esac
 case $C in
@@ -67,10 +86,3 @@ cd / && cd $upx_testsuite_SRCDIR || exit 1
 cd / && cd $upx_BUILDDIR || exit 1
 # enter srcdir
 cd / && cd $upx_SRCDIR || exit 1
-
-if [[ -n $APPVEYOR_JOB_ID ]]; then
-# for some reason this is needed for bash on AppVeyor
-sort() {
-    /usr/bin/sort "$@"
-}
-fi
