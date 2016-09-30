@@ -34,14 +34,23 @@ matrix:
   include:
     - os: linux
       compiler: gcc
-      env: C=gcc CROSS=arm-linux
+      env: C=gcc-4.6 CROSS=arm-linux
       addons: { apt: { packages: [ "gcc-arm-linux-gnueabi", "qemu-user-static" ] } }
     - os: linux
       compiler: gcc
-      env: C=gcc CROSS=armeb-linux
-      addons: { apt: { packages: [ "xgcc-armeb-linux-gnueabi", "qemu-user-static" ] } }
+      env: C=gcc-4.6 CROSS=mips-linux
+      addons: { apt: { packages: [ "gcc-mips-linux-gnueabi", "qemu-user-static" ] } }
+    - os: linux
+      compiler: gcc
+      env: C=gcc-4.6-m32 CROSS=i386-win32.mingw
+      addons: { apt: { packages: [ "gcc-mingw-w64-i686" ] } }
+    - os: linux
+      compiler: gcc
+      env: C=gcc-4.6-m64 CROSS=x86_64-win64.mingw
+      addons: { apt: { packages: [ "gcc-mingw-w64-x86-64" ] } }
 
 install:
+  - dpkg -L qemu-user-static || true
   - umask 022; cd $TRAVIS_BUILD_DIR && mkdir -p ../deps
   - cd ../deps && travis_retry wget -q -O - https://github.com/upx/upx/files/499379/ucl-1.03.tar.gz | tar -xz
   - cd ../deps && travis_retry git clone https://github.com/upx/upx-testsuite

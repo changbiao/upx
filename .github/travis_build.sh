@@ -61,10 +61,19 @@ set -x
 #
 
 cd $ucl_BUILDDIR || exit 1
-if [[ ! -f config.status ]]; then
-$ucl_SRCDIR/configure --enable-static --disable-shared --disable-asm
+if [[ $TRAVIS_OS_NAME == windows ]]; then
+    # configure is too old
+    rm -f ./*.o libucl.a
+    $CC -O2 -I$ucl_SRCDIR/include -I$ucl_SRCDIR -c $ucl_SRCDIR/src/*.c
+    ar rcs libucl.a *.o
+    mkdir -p src/.libs
+    cp libucl.a src/.libs
+else
+    if [[ ! -f config.status ]]; then
+        $ucl_SRCDIR/configure --enable-static --disable-shared --disable-asm
+    fi
+    make
 fi
-make
 
 #
 # build UPX
