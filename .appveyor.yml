@@ -18,12 +18,12 @@ install:
   - cd c:\projects\upx
   - git submodule update --init --recursive
   - cd c:\projects\deps
-  - appveyor DownloadFile "https://github.com/upx/upx/files/499379/ucl-1.03.tar.gz"
-  - appveyor DownloadFile "https://github.com/upx/upx/files/499381/zlib-1.2.8.tar.gz"
+  - curl -q --retry 5 -o ucl-1.03.tar.gz   "https://github.com/upx/upx/files/499379/ucl-1.03.tar.gz"
+  - curl -q --retry 5 -o zlib-1.2.8.tar.gz "https://github.com/upx/upx/files/499381/zlib-1.2.8.tar.gz"
   - curl -q --retry 5 -o config.guess "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD"
   - curl -q --retry 5 -o config.sub   "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD"
   - tar -xzf ucl-1.03.tar.gz
-  - cp config.guess config.sub ucl-1.03
+  - cp config.guess config.sub ucl-1.03/acconfig/
   # patch UCL for msvc-14.0 (vsnprintf issue)
   - sed -i '/# *define.*snprintf  *_v*snprintf$/d' ucl-1.03/acc/acc_auto.h
   - tar -xzf zlib-1.2.8.tar.gz
