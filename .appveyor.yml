@@ -25,7 +25,7 @@ install:
   - sed -i '/# *define.*snprintf  *_v*snprintf$/d' ucl-1.03/acc/acc_auto.h
   - tar -xzf zlib-1.2.8.tar.gz
   - git clone https://github.com/upx/upx-testsuite
-  - if "%C%"=="gcc-m64" ( PATH=c:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0\mingw32\bin;%PATH% )
+  - if "%C%"=="gcc-m64" ( set PATH=c:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0\mingw32\bin;%PATH% )
   - if "%C%"=="msvc-10.0-x86" ( call "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x86 )
   - if "%C%"=="msvc-10.0-x64" ( call "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" amd64 )
   - if "%C%"=="msvc-11.0-x86" ( call "c:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat" x86 )

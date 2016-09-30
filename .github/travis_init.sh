@@ -24,7 +24,7 @@ fi
 
 umask 022
 
-argv0="$0"; argv0dir=$(readlink -fn -- "$0"); argv0dir=$(dirname "$0")
+argv0="$0"; argv0dir=$(readlink -fn -- "$0"); argv0dir=$(dirname "$argv0dir")
 
 # just in case
 UPX=
