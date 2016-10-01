@@ -35,7 +35,11 @@ matrix:
     - os: linux
       compiler: gcc
       env: C=gcc-4.6 CROSS=arm-linux
-      addons: { apt: { packages: [ "gcc-arm-linux-gnueabi", "qemu-user-static" ] } }
+      addons: { apt: { packages: [ "gcc-arm-linux-gnueabi", "qemu-user" ] } }
+    - os: linux
+      compiler: gcc
+      env: C=gcc-4.6 CROSS=powerpc-linux
+      addons: { apt: { packages: [ "gcc-ppc-linux-gnu", "qemu-user" ] } }
     - os: linux
       dist: trusty
       compiler: gcc
