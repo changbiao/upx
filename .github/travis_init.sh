@@ -26,6 +26,8 @@ umask 022
 
 argv0="$0"; argv0dir=$(readlink -fn -- "$0"); argv0dir=$(dirname "$argv0dir")
     echo "PATH=$PATH"
+    which make || true
+    ls -l /usr/bin/make || true
     which gcc || true
     which gcc.exe || true
 

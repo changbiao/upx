@@ -35,17 +35,17 @@ matrix:
     - os: linux
       compiler: gcc
       env: C=gcc-4.6 CROSS=arm-linux
-      addons: { apt: { packages: [ "gcc-arm-linux-gnueabihf", "qemu-user" ] } }
+      addons: { apt: { packages: [ "g++-arm-linux-gnueabihf", "qemu-user" ] } }
     - os: linux
       dist: trusty
       compiler: gcc
       env: C=gcc-4.6 CROSS=powerpc-linux
-      addons: { apt: { packages: [ "gcc-ppc-linux-gnu", "qemu-user" ] } }
+      addons: { apt: { packages: [ "g++-powerpc-linux", "qemu-user" ] } }
     - os: linux
       dist: trusty
       compiler: gcc
       env: C=gcc-4.6 CROSS=mips-linux
-      addons: { apt: { packages: [ "gcc-mips-linux-gnu", "qemu-user" ] } }
+      addons: { apt: { packages: [ "g++-mips-linux", "qemu-user" ] } }
     - os: linux
       compiler: gcc
       env: C=gcc-4.6-m32 CROSS=i386-win32.mingw
@@ -60,7 +60,7 @@ install:
   - dpkg -L qemu-user-static || true
   - dpkg -L gcc-mips-linux-gnu || true
   - dpkg -L gcc-ppc-linux-gnu || true
-  - dpkg -L mingw64-dev-all || true
+  - dpkg -L mingw64-w64-dev || true
   - dpkg -L gcc-mingw64-i686 || true
   - dpkg -L gcc-mingw64-x86-64 || true
   - dpkg -L gcc-arm-linux-gnueabihf || true
