@@ -36,7 +36,7 @@ CC=false CXX=false SCAN_BUILD=false
 if [[ -n $CROSS ]]; then
 case $CROSS-$C in
     i686-w64-mingw32-gcc | i386-win32[.-]mingw-gcc-4.6-m32)
-        CC="i686-w64-mingw32-gcc-4.6"; CXX="i686-w64-mingw32-gcc-4.6" ;;
+        CC="i686-w64-mingw32-gcc-4.6"; CXX="i686-w64-mingw32-g++-4.6" ;;
     x86_64-w64-mingw32-gcc | x86_64-win64[.-]mingw-gcc-4.6-m64)
         CC="x86_64-w64-mingw32-gcc-4.6"; CXX="x86_64-w64-mingw32-g++-4.6" ;;
 esac

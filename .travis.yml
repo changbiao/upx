@@ -39,11 +39,11 @@ matrix:
     - os: linux
       compiler: gcc
       env: C=gcc-4.6-m32 CROSS=i386-win32.mingw
-      addons: { apt: { packages: [ "binutils-mingw-w64-i686", "gcc-mingw-w64-i686", "wine" ] } }
+      addons: { apt: { packages: [ "binutils-mingw-w64-i686", "g++-mingw-w64-i686", "wine" ] } }
     - os: linux
       compiler: gcc
       env: C=gcc-4.6-m64 CROSS=x86_64-win64.mingw
-      addons: { apt: { packages: [ "binutils-mingw-w64-x86-64", "gcc-mingw-w64-x86-64", "wine" ] } }
+      addons: { apt: { packages: [ "binutils-mingw-w64-x86-64", "g++-mingw-w64-x86-64", "wine" ] } }
 
 install:
   - umask 022; cd $TRAVIS_BUILD_DIR && mkdir -p ../deps
