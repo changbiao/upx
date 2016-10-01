@@ -54,16 +54,6 @@ build_script:
   - if "%C%"=="gcc-m64" bash -x ./.github/travis_build.sh
 
 test_script:
-  - set UPX=--no-color --no-progress
-  - cd %BDIR%\upx
-  # basic tests
-  - .\upx.exe --version
-  - .\upx.exe upx.exe -o upx_packed.exe
-  - dir *.exe
-  - .\upx.exe -l upx_packed.exe
-  - .\upx.exe -t upx_packed.exe
-  - .\upx_packed.exe --version
-  # now run the UPX testsuite using Cygwin bash - this really works!
   - cd c:\projects\upx
   - bash ./.github/travis_testsuite_1.sh
 
