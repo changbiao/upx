@@ -40,12 +40,12 @@ matrix:
       dist: trusty
       compiler: gcc
       env: C=gcc-4.6 CROSS=powerpc-linux
-      addons: { apt: { packages: [ "g++-powerpc-linux", "qemu-user" ] } }
+      addons: { apt: { packages: [ "g++-powerpc-linux-gnu", "qemu-user" ] } }
     - os: linux
       dist: trusty
       compiler: gcc
       env: C=gcc-4.6 CROSS=mips-linux
-      addons: { apt: { packages: [ "g++-mips-linux", "qemu-user" ] } }
+      addons: { apt: { packages: [ "g++-mips-linux-gnu", "qemu-user" ] } }
     - os: linux
       compiler: gcc
       env: C=gcc-4.6-m32 CROSS=i386-win32.mingw
