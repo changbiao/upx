@@ -55,6 +55,10 @@ matrix:
       compiler: gcc
       env: C=gcc-4.6-m64 CROSS=x86_64-win64.mingw
       addons: { apt: { packages: [ "binutils-mingw-w64-x86-64", "gcc-mingw-w64-x86-64" ] } }
+    - os: linux
+      compiler: clang
+      env: C=clang-3.9-m64
+      addons: { apt: { sources: *S, packages: [ "clang-3.9" ] } }
 
 install:
   - dpkg -L qemu-user || true
