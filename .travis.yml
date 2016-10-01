@@ -61,8 +61,8 @@ install:
   - dpkg -L gcc-mips-linux-gnu || true
   - dpkg -L gcc-ppc-linux-gnu || true
   - dpkg -L mingw-w64-dev || true
-  - dpkg -L gcc-mingw64-i686 || true
-  - dpkg -L gcc-mingw64-x86-64 || true
+  - dpkg -L gcc-mingw-w64-i686 || true
+  - dpkg -L gcc-mingw-w64-x86-64 || true
   - dpkg -L gcc-arm-linux-gnueabihf || true
   - umask 022; cd $TRAVIS_BUILD_DIR && mkdir -p ../deps
   - cd ../deps && travis_retry wget -q -O - https://github.com/upx/upx/files/499379/ucl-1.03.tar.gz | tar -xz
