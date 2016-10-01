@@ -39,7 +39,7 @@ matrix:
     - os: linux
       compiler: gcc
       env: C=gcc-4.6 CROSS=mips-linux
-      addons: { apt: { packages: [ "gcc-mips-linux-gnueabi", "qemu-user-static" ] } }
+      addons: { apt: { packages: [ "gcc-mips-linux-gnu", "qemu-user" ] } }
     - os: linux
       compiler: gcc
       env: C=gcc-4.6-m32 CROSS=i386-win32.mingw
@@ -50,6 +50,7 @@ matrix:
       addons: { apt: { packages: [ "gcc-mingw-w64" ] } }
 
 install:
+  - dpkg -L qemu-user || true
   - dpkg -L qemu-user-static || true
   - umask 022; cd $TRAVIS_BUILD_DIR && mkdir -p ../deps
   - cd ../deps && travis_retry wget -q -O - https://github.com/upx/upx/files/499379/ucl-1.03.tar.gz | tar -xz
