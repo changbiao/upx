@@ -42,7 +42,7 @@ build_script:
   # setup directories following the VPATH build in travis_build.sh
   - cd c:\projects\upx
   - dir c:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0\mingw32\bin
-  - dir c:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0\mingw64\bin
+  - dir c:\mingw-w64\
   - if "%C%"=="gcc-m32" ( bash -x ./.github/travis_build.sh & exit )
   - set BDIR=c:\projects\build\%C%\%B%
   - md %BDIR% %BDIR%\ucl-1.03 %BDIR%\upx %BDIR%\upx-testsuite %BDIR%\zlib-1.2.8

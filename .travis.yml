@@ -35,8 +35,9 @@ matrix:
     - os: linux
       compiler: gcc
       env: C=gcc-4.6 CROSS=arm-linux
-      addons: { apt: { packages: [ "gcc-arm-linux-gnueabi", "qemu-user" ] } }
+      addons: { apt: { packages: [ "gcc-arm-linux-gnueabihf", "qemu-user" ] } }
     - os: linux
+      dist: trusty
       compiler: gcc
       env: C=gcc-4.6 CROSS=powerpc-linux
       addons: { apt: { packages: [ "gcc-ppc-linux-gnu", "qemu-user" ] } }
@@ -59,6 +60,10 @@ install:
   - dpkg -L qemu-user-static || true
   - dpkg -L gcc-mips-linux-gnu || true
   - dpkg -L gcc-ppc-linux-gnu || true
+  - dpkg -L mingw64-dev-all || true
+  - dpkg -L gcc-mingw64-i686 || true
+  - dpkg -L gcc-mingw64-x86-64 || true
+  - dpkg -L gcc-arm-linux-gnueabihf || true
   - umask 022; cd $TRAVIS_BUILD_DIR && mkdir -p ../deps
   - cd ../deps && travis_retry wget -q -O - https://github.com/upx/upx/files/499379/ucl-1.03.tar.gz | tar -xz
   - cd ../deps && travis_retry git clone https://github.com/upx/upx-testsuite
