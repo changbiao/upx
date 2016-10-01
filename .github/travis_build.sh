@@ -63,6 +63,9 @@ set -x
 cd $ucl_BUILDDIR || exit 1
 if [[ $TRAVIS_OS_NAME == windows ]]; then
     # configure is too old
+    echo "PATH=$PATH"
+    which gcc || true
+    which gcc.exe || true
     rm -f ./*.o libucl.a
     $CC -O2 -I$ucl_SRCDIR/include -I$ucl_SRCDIR -c $ucl_SRCDIR/src/*.c
     ar rcs libucl.a *.o
