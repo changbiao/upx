@@ -50,6 +50,9 @@ build_script:
   - if "%C%"=="gcc-m32" set PATH=c:\cygwin\bin;%PATH%
   - if "%C%"=="gcc-m32" bash -x ./.github/travis_build.sh
   - if "%C%"=="gcc-m32" exit
+  - if "%C%"=="gcc-m32" exit /b
+  - if "%C%"=="gcc-m32" quit
+  - if "%C%"=="gcc-m32" false
   # setup directories following the VPATH build in travis_build.sh
   - set BDIR=c:\projects\build\%C%\%B%
   - md %BDIR% %BDIR%\ucl-1.03 %BDIR%\upx %BDIR%\upx-testsuite %BDIR%\zlib-1.2.8

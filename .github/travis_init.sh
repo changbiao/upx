@@ -25,11 +25,6 @@ fi
 umask 022
 
 argv0="$0"; argv0dir=$(readlink -fn -- "$0"); argv0dir=$(dirname "$argv0dir")
-    echo "PATH=$PATH"
-    which make || true
-    ls -l /usr/bin/make || true
-    which gcc || true
-    which gcc.exe || true
 
 # just in case
 UPX=
@@ -38,6 +33,14 @@ UPX=
 [[ -z $C ]] && C=gcc
 if [[ -z $CC_OVERRIDE ]]; then
 CC=false CXX=false SCAN_BUILD=false
+if [[ -n $CROSS ]]; then
+case $CROSS-$C in
+    i686-w64-mingw32-gcc | i386-win32[.-]mingw-gcc-4.6-m32)
+        CC="i686-w64-mingw32-gcc-4.6"; CXX="i686-w64-mingw32-gcc-4.6" ;;
+    x86_64-w64-mingw32-gcc | x86_64-win64[.-]mingw-gcc-4.6-m64)
+        CC="x86_64-w64-mingw32-gcc-4.6"; CXX="x86_64-w64-mingw32-g++-4.6" ;;
+esac
+else
 case $C in
     clang | clang-m?? | clang-3.4-m?? | clang-[678][0-9][0-9]-m??)
         CC="clang"; CXX="clang++" ;; # standard system compiler
@@ -58,6 +61,7 @@ case $C in
     gcc*-m32)   CC="$CC -m32"; CXX="$CXX -m32" ;;
     gcc*-m64)   CC="$CC -m64"; CXX="$CXX -m64" ;;
 esac
+fi
 case $C in
     clang* | gcc*) CC="$CC -std=gnu89" ;;
 esac
