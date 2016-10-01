@@ -37,17 +37,18 @@ matrix:
       env: C=gcc-4.6 CROSS=arm-linux
       addons: { apt: { packages: [ "gcc-arm-linux-gnueabi", "qemu-user-static" ] } }
     - os: linux
+      dist: trusty
       compiler: gcc
       env: C=gcc-4.6 CROSS=mips-linux
       addons: { apt: { packages: [ "gcc-mips-linux-gnu", "qemu-user" ] } }
     - os: linux
       compiler: gcc
       env: C=gcc-4.6-m32 CROSS=i386-win32.mingw
-      addons: { apt: { packages: [ "gcc-mingw-w64-i686" ] } }
+      addons: { apt: { packages: [ "binutils-mingw-w64-i686", "gcc-mingw-w64-i686" ] } }
     - os: linux
       compiler: gcc
       env: C=gcc-4.6-m64 CROSS=x86_64-win64.mingw
-      addons: { apt: { packages: [ "gcc-mingw-w64-x86_64" ] } }
+      addons: { apt: { packages: [ "binutils-mingw-w64-x86-64", "gcc-mingw-w64-x86-64" ] } }
 
 install:
   - dpkg -L qemu-user || true
