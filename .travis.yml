@@ -60,7 +60,7 @@ install:
   - dpkg -L qemu-user-static || true
   - dpkg -L gcc-mips-linux-gnu || true
   - dpkg -L gcc-ppc-linux-gnu || true
-  - dpkg -L mingw64-w64-dev || true
+  - dpkg -L mingw-w64-dev || true
   - dpkg -L gcc-mingw64-i686 || true
   - dpkg -L gcc-mingw64-x86-64 || true
   - dpkg -L gcc-arm-linux-gnueabihf || true
